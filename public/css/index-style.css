@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+
+
+/*banner area*/
+
+section {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 110px 100px;
+}
+
+@media (max-width:1000px) {
+    section {
+        padding: 100px 50px;
+    }
+}
+
+@media (max-width:600px) {
+    section {
+        padding: 125px 30px;
+    }
+}
+
+section p {
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 35px;
+    padding: 0 20px;
+    line-height: 2;
+}
+
+.banner-area {
+    /* position: relative; */
+    justify-content: center;
+    min-height: 100vh;
+    color: #fff;
+    text-align: center;
+}
+
+.banner-area .banner-img {
+    background-image: url("/img/fundo_1.jpg");
+    position: absolute;
+    /* top: 0;
+    left: 0; */
+    width: 100%;
+    height: 100%;
+    /* -webkit-background-size: cover; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+.banner-area .banner-img:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .8;
+}
+
+.banner-area h1 {
+    margin-bottom: 15px;
+    font-size: 65px;
+    font-family: merienda;
+}
+
+.banner-area h1 span {
+    color: crimson;
+}
+
+.banner-area h3 {
+    margin-bottom: 40px;
+    font-size: 25px;
+}
+
+.banner-area a.banner-btn {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 15px 35px;
+    background: crimson;
+    border-radius: 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+@media (max-width:800px) {
+    .banner-area {
+        min-height: 600px;
+    }
+
+    .banner-area h1 {
+        font-size: 32px;
+    }
+
+    .banner-area h3 {
+        font-size: 20px;
+    }
+
+    .banner-area a.banner-btn {
+        padding: 15px 40px;
+    }
+}
+
+/*about area*/
+
+ul.about-content {
+    width: 100%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.about-content li {
+    padding: 20px;
+    height: 290px;
+    background-clip: content-box;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+.about-left {
+    flex-basis: 40%;
+    background-image: url("https://barbeariavisual.com/wp-content/uploads/2019/09/Cabeleireiro-de-Bel%C3%A9m-do-Piau%C3%AD-participa-de-maior-evento-para-Barbeiros-do-Mundo.jpg");
+}
+
+.about-right {
+    flex-basis: 60%;
+}
+
+.about-area p {
+    max-width: 800px;
+    margin-bottom: 35px;
+    line-height: 1.5;
+    text-align: left;
+    padding-left: 0;
+}
+
+.section-title {
+    text-transform: uppercase;
+    font-size: 42px;
+    margin-bottom: 5%;
+}
+
+.about-right h2 {
+    margin-bottom: 5%;
+}
+
+.about-btn {
+    padding: 15px 35px;
+    background: crimson;
+    border-radius: 50px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+@media (max-width: 1000px) {
+
+    .about-left,
+    .about-right {
+        flex-basis: 100%;
+    }
+
+    .about-content li {
+        padding: 8px;
+    }
+}
+
+/*service area*/
+
+#services {
+    background: #ddd;
+}
+
+ul.services-content {
+    width: 100%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.services-content li {
+    padding: 0 30px;
+    flex-basis: 33%;
+    text-align: center;
+}
+
+.services-content li i {
+    font-size: 50px;
+    color: crimson;
+    margin-bottom: 25px;
+}
+
+.services-content li h4 {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.services-content li p {
+    margin: 0;
+}
+
+@media (max-width:1000px) {
+    .services-content li {
+        flex-basis: 100%;
+        margin-bottom: 65px;
+    }
+
+    .services-content li:last-child {
+        margin-bottom: 0;
+    }
+
+    .services-content li p {
+        padding: 0;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+}
+
+/*contact area*/
+
+#contact {
+    background: #fff;
+}
+
+ul.contact-content {
+    width: 100%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact-content li {
+    padding: 0 30px;
+    flex-basis: 33%;
+    text-align: center;
+}
+
+.contact-content li i {
+    font-size: 50px;
+    color: crimson;
+    margin-bottom: 25px;
+}
+
+.contact-content li p {
+    margin: 0;
+}
+
+@media (max-width: 1000px) {
+    .contact-content li {
+        flex-basis: 100%;
+        margin-bottom: 65px;
+    }
+
+    .contact-content li:last-child {
+        margin-bottom: 0;
+    }
+
+    .contact-content li p {
+        padding: 0;
+    }
+}
+
+/* sociais */
+/*contact area*/
+
+#sociais {
+    background: crimson;
+}
+
+.section-title-sociais {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 17px;
+    font-weight: bold;
+    color: #fff;
+    /* margin-bottom: 2%; */
+}
+
+ul.sociais-content {
+    width: 100%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sociais-content li {
+    padding: 0 30px;
+    flex-basis: 33%;
+    text-align: center;
+}
+
+.sociais-content li i {
+    color: #fff;
+    font-size: 30px;
+    padding: 10px;
+    /* font-size: 50px;
+    color: crimson;
+    margin-bottom: 25px; */
+}
+
+.contact-content li p {
+    margin: 0;
+}
+
+@media (max-width: 1000px) {
+    .contact-content li {
+        flex-basis: 100%;
+        margin-bottom: 65px;
+    }
+
+    .contact-content li:last-child {
+        margin-bottom: 0;
+    }
+
+    .contact-content li p {
+        padding: 0;
+    }
+}
+
+/* sociais */
+
+/*footer*/
+
+footer {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    background-color: #000;
+    padding: 30px 0;
+}
+
+footer p {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    color: white;
+}
+
+
+@media (max-width:600px) {
+    footer {
+        padding: 20px 0;
+    }
+
+    footer p {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,11 @@
+.bg-login-image {
+    background: url("/img/barberpole-800x600.png");
+    background-position: center;
+    background-size: cover;
+}
+  
+.bg-register-image {
+    background: url("/img/barberpole-800x600.png");
+    background-position: center;
+    background-size: cover;
+}
