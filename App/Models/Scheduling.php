@@ -458,7 +458,9 @@
                     AND
                     s.start >= NOW() 
                     AND
-                    s.start < DATE_ADD(NOW(), INTERVAL 7 DAY);
+                    s.start < DATE_ADD(NOW(), INTERVAL 7 DAY)
+                
+                ;
         
             ";
 
@@ -509,15 +511,16 @@
 
             $query = "
                 SELECT
-                    s.id, s.start, s.end, s.fk_service, s.fk_employee, s.fk_city, NOW() AS now
+                    s.id, s.start, s.end, s.fk_service, s.fk_employee, s.fk_city, NOW() AS now, MONTH(NOW()), MONTH(s.start)
                 FROM 
                     scheduling AS s
                 WHERE
                     s.fk_employee = :employee
                     AND
-                    s.start >= NOW() 
-                    AND
                     MONTH(s.start) = MONTH(NOW())
+                ORDER BY
+                    s.start
+                        ASC
             ";
 
             // s.start < DATE_ADD(NOW(), INTERVAL 40 DAY);
@@ -530,6 +533,10 @@
             $stmt->execute();
 
             while($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+                // echo "<pre>";
+                // print_r($row);
+                // echo "</pre>";
+
                 $service->__set("id", $row['fk_service']);
                 $serv = $service->getServiceById();
                 

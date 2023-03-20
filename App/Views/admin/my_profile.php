@@ -126,8 +126,8 @@
       </div>
     </div>
 
-    <div class="card mb-6 mb-lg-0 mb-5">
-          <div class="card-body p-0">
+    <!-- <div class="card mb-6 mb-lg-0 mb-5"> -->
+          <!-- <div class="card-body p-0">
             <ul class="list-group list-group-flush rounded-3">
               <a href="https://www.wa.me/<?= isset($user['social']['instagram']) ? substr($user['social']['whatsapp'], 1, strlen($user['social']['whatsapp']) -1) : "0000000000000"?>">              
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
@@ -149,8 +149,8 @@
               </a>
             </ul>
           </div>
-        </div>
-  </div>
+        </div> -->
+  <!-- </div> -->
 
 </section>
 
