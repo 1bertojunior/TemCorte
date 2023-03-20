@@ -50,6 +50,21 @@
         <!-- STEP 3 -->
         <div id="step3" class="step">
             <h1>Confirmação</h1>
+
+            <dl class="row">                    
+                <dt class="col-sm-3">Serviço:</dt>
+                <dd class="col-sm-9">
+                    <span id="service_modal"> </span>                    
+                </dd>
+            </dl>
+
+            <dl class="row">                    
+                <dt class="col-sm-3">Horário:</dt>
+                <dd class="col-sm-9">
+                    <span id="time_modal"> </span>                    
+                </dd>
+            </dl>
+
             <div>
                 <button class="prev botoes" id="prev" type="button" onclick="clickPrevSteps()">Voltar</button>
                 <button class="send botoes" id="next" type="submit">Enviar</button>            

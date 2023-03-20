@@ -37,6 +37,8 @@ async function innitScheduling(){
     // iniciar o date picker
     innitDatePicker();
 
+    
+
 }
 
 async function setService(){
@@ -60,6 +62,29 @@ async function clickNextSteps(){
     progress.classList.add("active-progress") //progress
     elCurrent.classList.remove("active"); // hide
     elNext.classList.add("active"); //show
+
+    if(index == 1 ){
+        console.log(index)
+        
+        var service_select = document.getElementById('service');
+	    var service_text = service_select.options[service_select.selectedIndex].text;
+
+        var time_select = document.getElementById('time');
+	    var time_text = time_select.options[time_select.selectedIndex].text;
+        
+
+        console.log(time_text)
+
+
+        var service_modal = document.getElementById('service_modal');
+        service_modal.innerHTML= service_text
+
+        var time_modal = document.getElementById('time_modal');
+        time_modal.innerHTML= time_text
+
+  
+
+    }
 
     index++;
 }
@@ -119,7 +144,7 @@ async function setOption(selectId = null, url = [], name = 'name', value = 'valu
         fetch(url)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             // Cria um option para cada item em data
             data.forEach(item => {
                 const optionElement = document.createElement('option');

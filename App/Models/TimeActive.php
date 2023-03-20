@@ -457,12 +457,19 @@
             $result = [];
             // $day = Container::getModel('day');
             $time = Container::getModel('time');
+            
+            date_default_timezone_set('America/Sao_Paulo');
+            $timeCurrent = date('H:i:s');
+
+            // echo $timeCurrent;
 
             while($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
                 // $day->__set("id", $row['fk_day']);
                 $time->__set("id", $row['fk_time']);
 
-                array_push( $result,  $time->getById()['time'] );
+                $timeValue = $time->getById()['time'];
+
+                array_push( $result,  $timeValue );
             }
             
 

@@ -1,3 +1,24 @@
+async function setOptionTime(selectId = null, url = [], name = 'name', value = 'value') {
+  
+  const selectElement = document.getElementById(selectId);
+  selectElement.innerHTML = '';
+  fetch(url)
+  .then(response => response.json())
+  .then(data => {
+      // console.log(data)
+
+      // Cria um option para cada item em data
+      data.forEach(item => {
+          const optionElement = document.createElement('option');
+          optionElement.value = item[value];
+          optionElement.text = item[name];
+          selectElement.appendChild(optionElement);
+      }); 
+    
+  });
+
+}
+
 function innitDatePicker(){
   console.log("\nIniciando o datepicker\n")
 
@@ -54,12 +75,12 @@ function innitDatePicker(){
             var dateSelected = e.format('mm-dd-yyyy');            
             var url = getUrl();
             url += "/time?date=" + dateSelected
-            console.log(url)
+            // console.log(url)
 
 
-            console.log("Data selecionada: " + dateSelected);
+            // console.log("Data selecionada: " + dateSelected);
             
-            setOption('time', url )
+            setOptionTime('time', url )
             // setOption('service', url, 'name', 'duration');
 
 
