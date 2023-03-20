@@ -48,7 +48,7 @@ async function setService(){
     // data = getDataFromAPI(url);
     // data = getDataAPI(url);
 
-    setOption('service', url, 'name', 'duration')
+    setOption('service', url, 'name', 'duration');
 }
 
 async function clickNextSteps(){

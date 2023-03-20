@@ -166,13 +166,9 @@ class SchedulingController extends Action {
 			$result = [];
 			$date = isset($_GET['date']) ? $_GET['date'] : "00-00-0000" ;
 
-			// $date = str_replace( "-", "/", $date)  ;
 			$timestamp = strtotime( str_replace( "-", "/", $date) );
 			$day = date("w", $timestamp) + 1;
 
-			// echo "O dia da semana em $date é $day";
-			// echo "date: " . $date . "<br>";
-			// echo "convertido: " . date_create_from_format('m-d-Y', $date)->format('Y-m-d') . "<br>";
 
 			$timeActive = Container::getModel('timeActive');
 			$timeActive->__set("fk_day", $day);
@@ -184,6 +180,8 @@ class SchedulingController extends Action {
 			$scheduling->__set("start", date_create_from_format('m-d-Y', $date)->format('Y-m-d') );
 
 			$allTimeSche = $scheduling->getAllAgendandados();
+
+			$time = Container::getModel('time');
 
 
 			$freeTimes = array();
@@ -203,20 +201,24 @@ class SchedulingController extends Action {
 					array_push($freeTimes, $allDay[$i]);
 				}
 			}
+			
+			$arr = [];
+			foreach ($freeTimes as $id => $t) {
+				$time->__set('time', $t);
+				$value = $time->getIdByTime()['id'];
+				// echo $value;
+				$arr= [
+					'name' => $t,
+					'value' => $value
+				];
 
-			// print_r($freeTimes);
-
+				array_push($result, $arr);
+	
+			}
+	
 			// echo json_encode($freeTimes);
+			echo json_encode($result);
 
-
-			
-			
-		
-			
-			// echo json_encode($allDay);
-			// echo json_encode($allTimeSche);
-
-			echo json_encode($freeTimes);
 
 		}
 

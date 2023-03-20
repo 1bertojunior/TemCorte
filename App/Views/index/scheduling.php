@@ -37,7 +37,7 @@
 
             
             <h3>Horário</h3>            
-            <select name="hora" class="form-control" id="hour" required>
+            <select name="time" class="form-control" id="time" required>
                 <option value="null">Nenhum horário disponível</option>
             </select>
             

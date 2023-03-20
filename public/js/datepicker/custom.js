@@ -49,6 +49,10 @@ function innitDatePicker(){
 
 
             console.log("Data selecionada: " + dateSelected);
+            
+            setOption('time', url )
+            // setOption('service', url, 'name', 'duration');
+
 
           });
 

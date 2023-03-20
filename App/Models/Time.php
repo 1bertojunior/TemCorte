@@ -6,6 +6,7 @@
     class Time extends Model{
 
         private $id;
+        private $time;
         private $name;
 
         // Método mágico get
@@ -118,6 +119,26 @@
             return is_array($result) ? $result : [];
         }
 
+
+        public function getIdByTime(){
+            $query = "
+                SELECT 
+                   id                   
+                FROM
+                    time
+                WHERE
+                    time = :time        
+            ";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':time', $this->__get("time"));
+            $stmt->execute();
+
+            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+            
+            return $result; 
+
+        }
 
 
     }
