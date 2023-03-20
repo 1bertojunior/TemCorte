@@ -8,6 +8,12 @@
     $scheduling_7days = $website['scheduling_7days'];
     $scheduling_month = $website['scheduling_month'];
 
+    $createdSche = [
+        "class" => $website['created']['scheduling'] == "true" ? "success" : "danger",
+        "msg" => $website['created']['scheduling'] == "true" ? "Reserva criada com sucesso!" : "Erro ao criar reserva!",
+        "icon" => $website['created']['scheduling'] == "true" ? "check" : "exclamation"
+    ];
+
     $removeSche = [
         "class" => $website['remove']['scheduling'] == "true" ? "success" : "danger",
         "msg" => $website['remove']['scheduling'] == "true" ? "Agendamento removido com sucesso!" : "Erro ao remover agendamento",
@@ -15,10 +21,14 @@
     ];
 
 
-
-    
  ?>
 
+<?php if ($website['created']['scheduling']) { ?>
+    <div class="alert alert-<?= $createdSche['class'] ?>" role="alert">
+      <?= $createdSche['msg'] ?> 
+      <i class="fa fa-<?= $createdSche['icon'] ?>-circle" aria-hidden="true"></i>
+    </div>
+<?php } ?>
 
 <?php if ($website['remove']['scheduling']) { ?>
     <div class="alert alert-<?= $removeSche['class'] ?>" role="alert">

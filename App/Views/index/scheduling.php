@@ -9,7 +9,7 @@
 
     <div id="alert" class="alert alert-danger fade" role="alert"></div>
                
-    <form class="form-scheduling" id="form-scheduling" name="formscheduling">
+    <form class="form-scheduling" id="form-scheduling" name="formscheduling"  method="post" action="/scheduling/create_scheduling/">
 
         <!-- STEP 1 -->
         <div id="step1" class="step active">

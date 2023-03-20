@@ -316,6 +316,9 @@ class AdminController extends Action {
 					"user" => $user->get(),
 					"next_schedules" => $nextSchedules,
 					"latest_schedules" => $latestSchedules,
+					"created" => [
+						"scheduling" => (isset($_GET['created']) ? $_GET['created'] : 0 )
+					],
 					"remove" => [
 						"scheduling" => (isset($_GET['remove']) ? $_GET['remove'] : 0 )
 					]
@@ -377,6 +380,9 @@ class AdminController extends Action {
 					"scheduling_day" => $scheduling->getTodayEmployee(),
 					"scheduling_7days" => $scheduling->getNext7DaysByEmployee(),
 					"scheduling_month" => $scheduling->getMonthByEmployee(),
+					"created" => [
+						"scheduling" => (isset($_GET['created']) ? $_GET['created'] : 0 )
+					],
 					"remove" => [
 						"scheduling" => (isset($_GET['remove']) ? $_GET['remove'] : 0 )
 					]

@@ -38,6 +38,25 @@
             return $result;
         }
 
+        public function getIdByDuration(){
+            $query = "
+                SELECT
+                    id
+                FROM
+                    service
+                WHERE
+                    duration = :duration
+            ";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':duration', $this->__get("duration"));
+            $stmt->execute();
+            
+            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+            return $result;
+        }
+
         // CREATED
         public function created(){
             $sql = "

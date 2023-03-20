@@ -225,6 +225,63 @@ class SchedulingController extends Action {
 	
     }
 
+	public function createScheduling(){
+		if( $this->checkAuth() ){
+			
+			$scheduling = Container::getModel('scheduling');
+			$time = Container::getModel('time');
+			$service = Container::getModel('service');
+
+			$data = $_POST;
+			// print_r( $_POST );
+
+
+			$date = $data['date'];
+			$fk_client = $_SESSION['user']['id'];
+			$fk_employee = 1;
+			$fk_city = 1;
+			$fk_time = $data['time'];
+			$fk_service = $data['service'];
+
+			$time->__set('id', $fk_time);
+			$service->__set('id', $fk_service);
+
+			$duration_service = $service->get()['duration'];
+
+			$start = $date . " " . $time->getById()['time'] ;
+			$end = $date . " " . date('H:i:s' , strtotime($time->getById()['time']) + strtotime($duration_service) );
+			// $end = $date . " " . $duration_service;
+
+
+			echo "<br>start: " . $start;
+			echo "<br>end: " . $end;
+			echo "<br>fk_service: " . $fk_service;
+			echo "<br>fk_client: " . $fk_client;
+			echo "<br>fk_employee: " . $fk_employee;
+			echo "<br>fk_city: " . $fk_city;
+			echo "<br>";
+
+
+			// print_r( $_POST );
+
+			$scheduling->__set('start', $start);
+			$scheduling->__set('end', $end);
+			$scheduling->__set('fk_client', $fk_client);
+			$scheduling->__set('fk_service', $fk_service);
+			$scheduling->__set('fk_employee', $fk_employee);
+			$scheduling->__set('fk_city', $fk_city);
+
+			$result = $scheduling->created();
+
+
+			if( $result ) header ("Location: /admin/myschedules?created=true");
+			else header ("Location: /admin/myschedules?created=false");
+
+			// echo "result: " . $result;
+
+		}
+	}
+
 
 
 	// public function dayActive(){

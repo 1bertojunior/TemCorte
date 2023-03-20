@@ -48,7 +48,7 @@ async function setService(){
     // data = getDataFromAPI(url);
     // data = getDataAPI(url);
 
-    setOption('service', url, 'name', 'duration');
+    setOption('service', url, 'name', 'id');
 }
 
 async function clickNextSteps(){
@@ -119,6 +119,7 @@ async function setOption(selectId = null, url = [], name = 'name', value = 'valu
         fetch(url)
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             // Cria um option para cada item em data
             data.forEach(item => {
                 const optionElement = document.createElement('option');

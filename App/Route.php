@@ -52,6 +52,12 @@ class Route extends Bootstrap
 			'action' => 'time'
 		);
 
+		$routes['/scheduling/create_scheduling/'] = array(
+			'route' => '/scheduling/create_scheduling/',
+			'controller' => 'schedulingController',
+			'action' => 'createScheduling'
+		);
+
 		// Admin
 
 		$routes['login'] = array(

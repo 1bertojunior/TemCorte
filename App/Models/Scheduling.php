@@ -598,6 +598,30 @@
         }
 
 
+        public function created(){
+            $sql = "
+                INSERT INTO
+                    scheduling
+                    (start, end, fk_client, fk_service, fk_employee, fk_city)
+                VALUES
+                    (:start, :end, :fk_client, :fk_service, :fk_employee, :fk_city)
+            ";
+
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindValue(':start', $this->__get("start"));
+            $stmt->bindValue(':end', $this->__get("end"));
+            $stmt->bindValue(':fk_client', $this->__get("fk_client"));
+            $stmt->bindValue(':fk_service', $this->__get("fk_service"));
+            $stmt->bindValue(':fk_employee', $this->__get("fk_employee"));
+            $stmt->bindValue(':fk_city', $this->__get("fk_city"));
+
+
+            $result = $stmt->execute();
+                
+            return $result && $stmt->rowCount() > 0;
+        }
+
+
 
 
 

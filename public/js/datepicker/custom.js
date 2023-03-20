@@ -1,8 +1,16 @@
 function innitDatePicker(){
   console.log("\nIniciando o datepicker\n")
 
+      function getUrl(){
+        return window.location.href;
+      }
+
+      var url = getUrl();
+
+      // console.log("url: " + url);
+
       // Chama a API para obter os dias da semana a serem desabilitados
-      fetch("http://localhost:8080/scheduling/day_active")
+      fetch(url + "/day_active")
         .then(response => response.json())
         .then(data => {
   
@@ -13,7 +21,8 @@ function innitDatePicker(){
           $("#data").datepicker({
               update: '',
               language: "pt-BR",
-              format: "d MM yyyy",
+              // format: "d MM yyyy",
+              format: "yyyy-mm-dd",
               autoclose : true ,
               todayBtn: true,
               maxViewMode: 1,
