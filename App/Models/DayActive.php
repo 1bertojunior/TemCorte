@@ -69,6 +69,28 @@
             return $result;
         }
 
+
+        public function getAllDay(){
+            $result = [];
+
+            $query = "
+                SELECT 
+                    fk_day AS day               
+                FROM
+                    day_active
+                WHERE
+                    status = :status
+            ";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':status', 0);
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+            return is_array($result) ? $result : [];
+        }
+
         // CREATED
         public function created(){
             $sql = "

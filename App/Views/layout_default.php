@@ -85,14 +85,6 @@
 		<p>&copy; <?= $footer['year'] ?> <a href="/"><?= $footer['name'] ?></a> - <?= $footer['rights'] ?></p>
 	</footer>
 
-	<script>
-		const ano = document.getElementById("ano");
-		const anoAtual = new Date();
-		ano.innerHTML = anoAtual.getFullYear();
-	</script>
-
-
-
 </body>
 
 </html>

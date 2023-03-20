@@ -565,6 +565,37 @@
 
 
 
+        public function getAllAgendandados(){
+
+            $query = "
+                SELECT
+                    start, end
+                FROM
+                    scheduling
+                WHERE
+                    DATE(start) = :date
+            ";
+
+            //colocar ano dinâmico
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':date', $this->__get("start") );
+            // $stmt->bindValue(':date', "2023-03-20");
+            $stmt->execute();
+
+            $result = [];
+
+            // echo  $this->__get("start");
+
+            while($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+                $start_time = date("H:i:s", strtotime( $row['start'] ) );
+                $end_time = date("H:i:s", strtotime( $row['end'] ) );
+                array_push( $result, $start_time );
+                array_push( $result, $end_time );
+            }
+            
+            return is_array($result) ? $result : [];
+
+        }
 
 
 

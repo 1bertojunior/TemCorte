@@ -31,6 +31,8 @@
                 ];
 
                 $_SESSION['user'] = $user_session;
+
+                // print_r($_GET);;
         
                 header('Location: /admin');
                 // echo "autenticou com sucesso!";

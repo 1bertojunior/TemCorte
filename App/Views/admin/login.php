@@ -1,3 +1,7 @@
+<?php
+    print_r($_GET);
+?>
+
 <div class="container">
     <!-- Outer Row -->
     <div class="row justify-content-center">

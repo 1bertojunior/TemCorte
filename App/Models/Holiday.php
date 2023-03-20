@@ -273,7 +273,27 @@
             return $result;
         }
 
-        // Active services by city, employee and day
+        // 
+        public function getAllFormated(){
+            $this->__set("fk_employee", 1);
+            $result = $this->getAll();
+
+          
+
+			if(is_array($result) ){
+            	// print_r($result);
+				$days = array();
+				for ($i = 0; $i < count($result); $i++) {
+					array_push($days, $result[$i]["date"]);
+				}
+
+				$result= $days;
+
+			}
+
+            return $result;
+
+        }
 
     }
 

@@ -1,3 +1,168 @@
+function innitDatePicker(){
+  console.log("\nIniciando o datepicker\n")
+
+      // Chama a API para obter os dias da semana a serem desabilitados
+      fetch("http://localhost:8080/scheduling/day_active")
+        .then(response => response.json())
+        .then(data => {
+  
+          var disabledDays = data[0].map(item => item - 1); 
+          var disabledDates = data[1]; 
+
+
+          $("#data").datepicker({
+              update: '',
+              language: "pt-BR",
+              format: "d MM yyyy",
+              autoclose : true ,
+              todayBtn: true,
+              maxViewMode: 1,
+              multidate: false,
+              todayHighlight : true,
+
+              beforeShowDay: function(date) {
+                var dayOfWeek = date.getDay();
+                if (disabledDays.indexOf(dayOfWeek) !== -1) {
+                    return {
+                        enabled: false,
+                        classes: 'disabled-day',
+                        tooltip: 'Este dia não está disponível'
+                    };
+                } else if (disabledDates.indexOf(date.toISOString().slice(0,10)) !== -1) {
+                    return {
+                        enabled: false,
+                        classes: 'disabled-date',
+                        tooltip: 'Esta data não está disponível'
+                    };
+                } else {
+                    return {
+                        enabled: true
+                    };
+                }
+            },
+
+          }).on('changeDate', function(e) {
+            var dateSelected = e.format('mm-dd-yyyy');            
+            var url = getUrl();
+            url += "/time?date=" + dateSelected
+            console.log(url)
+
+
+            console.log("Data selecionada: " + dateSelected);
+
+          });
+
+        })
+        .catch(error => console.error('Erro ao obter dias desabilitados:', error));
+}
+
+
+
+
+
+// function innitDatePicker(){
+//     console.log("\nIniciando o datepicker\n")
+
+//     $(document).ready(function() {
+//         $("#data").datepicker({
+//             update: '',
+//             language: "pt-BR",
+//             format: "d MM yyyy",
+//             autoclose : true ,
+//             todayBtn: true,
+//             maxViewMode: 1,
+//             multidate: false,
+//             todayHighlight : true,
+
+//             beforeShowDay: function(date) {
+//               var dayOfWeek = date.getDay();
+//               var disabledDays = [1, 2, 3]; // Array com os dias da semana a serem desabilitados
+//               if (disabledDays.indexOf(dayOfWeek) !== -1) {
+//                   return {
+//                       enabled: false,
+//                       classes: 'disabled-day',
+//                       tooltip: 'Este dia não está disponível'
+//                   };
+//               } else {
+//                   return {
+//                       enabled: true
+//                   };
+//               }
+//             }
+
+//         });
+//     });
+// }
+
+
+// function innitDatePicker(){
+//   console.log("\nIniciando o datepicker\n")
+
+//   $(document).ready(function() {
+//       // Array com os dias da semana a serem desabilitados (retornados pela API)
+//       var disabledDays = [1, 2, 3];
+
+//       $("#data").datepicker({
+//           update: '',
+//           language: "pt-BR",
+//           format: "d MM yyyy",
+//           autoclose : true ,
+//           todayBtn: true,
+//           maxViewMode: 1,
+//           multidate: false,
+//           todayHighlight : true,
+//           beforeShowDay: function(date) {
+//               var dayOfWeek = date.getDay();
+//               if (disabledDays.indexOf(dayOfWeek) !== -1) {
+//                   return {
+//                       enabled: false,
+//                       classes: 'disabled-day',
+//                       tooltip: 'Este dia não está disponível'
+//                   };
+//               } else {
+//                   return {
+//                       enabled: true
+//                   };
+//               }
+//           }
+//       });
+//   });
+// }
+
+
+// /* function d'initialisation des composants */
+// function initDatePicker(){
+
+//     $(function() {
+
+//         $('#date').datepicker({
+//             update: '',
+//             language: "pt-BR",
+//             format: "d MM yyyy",
+//             // startDate: '+0d',
+//             autoclose : true ,
+//             todayBtn: true,
+//             maxViewMode: 1,
+//             multidate: false,
+//             todayHighlight : true,
+//             daysOfWeekDisabled: getDayByCityAndEmployee2(), //daysOfWeekDisabled,
+        
+//         }).on('changeDate', function(ev){
+//             console.log("Selecionou! " + ev.date);
+//         });
+
+//     });
+
+//     // $('#date').datepicker()
+//     // .on('changeDate', function(ev){
+//     //   if (ev.date.valueOf() < startDate.valueOf()){
+//     //   }
+//     // });
+
+// }
+
+
+
 // function innitDatePicker(){ 
 //     getDayByCityAndEmployee();
 // }

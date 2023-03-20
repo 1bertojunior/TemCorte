@@ -17,14 +17,13 @@ function getUrlAdmin(){
 
 // Remova todos os elementos <option> de um elemento <select>
 function removeAllOptions(select, i =0) {
-    // while (select.options.length) {
-    //   select.remove(0);
-    // }
-    // removendo todo, menos o default (o primeiro)
     while (select.options.length > 1) {
         select.remove(1);
     }
 }
+
+
+// SCHEDULING (INDEX)
 
 
 function setSchedulingDataInModal(id = 0){
@@ -222,3 +221,5 @@ function deleteService(){
     console.log(url);
     window.location.href = url;
 }
+
+

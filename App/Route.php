@@ -16,10 +16,40 @@ class Route extends Bootstrap
 			'action' => 'index'
 		);
 
+		$routes['scheduling'] = array(
+			'route' => '/scheduling/',
+			'controller' => 'indexController',
+			'action' => 'scheduling'
+		);
+
 		$routes['pageNotFound'] = array(
 			'route' => '/pageNotFound/',
 			'controller' => 'indexController',
 			'action' => 'pageNotFound'
+		);
+
+		$routes['/scheduling/service'] = array(
+			'route' => '/scheduling/service/',
+			'controller' => 'schedulingController',
+			'action' => 'service'
+		);
+
+		$routes['/scheduling/day_active'] = array(
+			'route' => '/scheduling/day_active/',
+			'controller' => 'schedulingController',
+			'action' => 'dayActive'
+		);
+
+		$routes['/scheduling/data_off'] = array(
+			'route' => '/scheduling/data_off/',
+			'controller' => 'schedulingController',
+			'action' => 'dataOff'
+		);
+
+		$routes['/scheduling/time'] = array(
+			'route' => '/scheduling/time/',
+			'controller' => 'schedulingController',
+			'action' => 'time'
 		);
 
 		// Admin

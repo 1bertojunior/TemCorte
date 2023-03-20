@@ -234,6 +234,7 @@
 
 
         public function getAllByDay(){
+            
             $sql = "
                 SELECT
                     id, fk_time, status
@@ -256,10 +257,6 @@
             $stmt->execute();
 
             $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-
-            // echo "<pre>";
-            // print_r($result);
-            // echo "</pre>";
 
             return is_array($result) ? $result : [];
         }
@@ -427,6 +424,50 @@
 
 
             return $result;
+        }
+
+
+
+        // sche
+
+        public function getTimeByDay(){
+            // echo "day: ". $this->__get("fk_day");
+            
+            $sql = "
+                SELECT
+                    id, fk_time
+                FROM
+                    time_active
+                WHERE
+                    status = :status
+                    AND
+                    fk_day = :fk_day
+                ;
+            ";
+
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindValue(':status', 1);
+            // $stmt->bindValue(':fk_day', $this->__get("fk_day"));
+            $stmt->bindValue(':fk_day', $this->__get("fk_day") );
+            $stmt->execute();
+
+
+            // $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+            $result = [];
+            // $day = Container::getModel('day');
+            $time = Container::getModel('time');
+
+            while($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+                // $day->__set("id", $row['fk_day']);
+                $time->__set("id", $row['fk_time']);
+
+                array_push( $result,  $time->getById()['time'] );
+            }
+            
+
+            // return $result;
+            return is_array($result) ? $result : [];
         }
 
     }
